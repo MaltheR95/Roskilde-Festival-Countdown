@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Roskilde Festival</title>
+    <style>
+        /* Styles for the body */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #FFF3E0;
+            color: #BF360C;
+        }
+        /* Styles for the heading */
+        h1 {
+            color: #E64A19;
+        }
+        /* Styles for the countdown text */
+        #countdown {
+            font-size: 2em;
+            color: #D84315;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown to Roskilde Festival</h1>
+    <p id="countdown">Loading...</p>
+
+    <script>
+        function updateCountdown() {
+            const festivalDate = new Date('2025-06-28T00:00:00'); // Set the festival start date here
+            const now = new Date();
+
+            const timeDifference = festivalDate - now;
+
+            // Check if the festival has started
+            if (timeDifference <= 0) {
+                document.getElementById('countdown').innerText = "Roskilde Festival has started!";
+                return;
+            }
+
+            // Calculate the number of days remaining
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown').innerText = `${days} day${days !== 1 ? 's' : ''} until Roskilde Festival!`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 24 * 60 * 60 * 1000); // Update the countdown daily
+    </script>
+</body>
+</html>
